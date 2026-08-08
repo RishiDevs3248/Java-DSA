@@ -1,0 +1,16 @@
+
+Primitive  -  byte, short, char, boolean, int, long, float, double
+Non-Primitive - String, Array, Class, Object, Interface
+
+------------------------------------------------------------------------------------------------------------------------
+
+Size of datatype
+
+byte - 1 byte
+short - 2 byte
+char - 2 byte
+boolean - 1 byte
+int - 4 byte
+long - 8 byte
+float - 4 byte
+double - 8 byte

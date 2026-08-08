@@ -1,0 +1,5 @@
+Conversion happens when you convert small type to large type
+
+ex: int to float
+
+Lossless conversion
