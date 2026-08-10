@@ -1,0 +1,7 @@
+Binary +, -, *, /, %
+
+Unary ++,--
+
+Pre increment -> ++a. - fist increment then the value will be used
+Post increment -> a++ - current value will be used and then will be incremented
+
