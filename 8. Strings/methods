@@ -1,0 +1,17 @@
+String xyz = "hello world";
+xyz.length();
+
+xyz.charAt(0);
+
+String abc = new String("Hello world");
+xyz.equals(abc);
+
+xyz.substring(0,5);
+
+String str1 = "apple";
+String str2 = "banana";
+str1.compareTo(str2); // -> equal then 0, str1<str2 -> -ve, str1>str2-> +ve  /// here -ve cause a<b
+
+StringBuilder str = new StringBuilder("hello world");
+
+str.toString();
