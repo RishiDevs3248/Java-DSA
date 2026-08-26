@@ -1,0 +1,32 @@
+Get ith bit 
+- bitmask =  1 left shilt with i (1<<i)
+- number & bitmask (num AND bitmask)
+
+
+Set ith bit
+- bitmask =  1 left shilt with i (1<<i)
+- number | bitmask (num OR bitmask)
+ 
+
+Clear ith bit
+- bitmask =  1 left shilt with i (1<<i), then ~(1<<i)not of leftshit 1
+- number & bitmask (num AND bitmask)
+
+
+Update ith bit 
+- if new bit is one -> then call Set ith bit
+- else call clear  ith bit
+
+
+Clear last i bits
+- bitmask =  0 left shilt with i (0<<i) them negate ~(0<<i)
+- number & bitmask (num AND bitmask)
+
+
+Clear range of bits
+- a = (~0) << (j+1)
+- b = (1<<i) - 1
+- bitmask = now a | b
+- num & bitmask
+
+

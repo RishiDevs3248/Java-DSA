@@ -6,6 +6,6 @@ Binary XOR ^
 
 Binary One's Complement ~
 
-Binary Left Shift <<
+Binary Left Shift << -> a<<b : a*2^b
 
-Binary Right Shift >>
+Binary Right Shift >> -> a>>b : a/2^b
