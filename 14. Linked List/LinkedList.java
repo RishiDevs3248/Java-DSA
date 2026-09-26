@@ -117,6 +117,66 @@ public class LinkedList {
         System.out.println("Not found ");
     }
 
+    public int recursiveSearch(int key, Node curr){
+    // public int recursiveSearch(int key, Node curr, int idx){
+    // if(curr == null){
+        //     return -1;
+        // }
+
+        // if(curr.data == key){
+        //     return idx;
+        // }
+
+        // return recursiveSearch(key, curr.next, idx+1);
+
+        if(curr == null){
+            return -1;
+        }
+        if(curr.data == key){
+            return 0;
+        }
+        int idx = recursiveSearch(key, curr.next);
+        if(idx == -1) return -1;
+        return idx+1;
+    }
+
+    public void reverseLL(){
+        if(head == null || head.next == null){
+            return;
+        }
+
+        Node temp1 = null;
+        Node temp2 = head;
+        Node temp3 = head.next;
+
+        while (temp3 != null){
+            temp2.next = temp1;
+            temp1 = temp2;
+            temp2 = temp3;
+            temp3 = temp3.next;
+        }
+        temp2.next = temp1;
+        tail = head;
+        head = temp2;
+        System.out.println("Revercing complete");
+
+    }
+
+    public void removeNthNode(int idx){
+
+        Node prev = head;
+        Node curr , next;
+        for(int i=0; i<idx-1; i++){
+            prev = prev.next;
+        }
+        curr = prev.next;
+        next = curr.next;
+
+        //removing process
+        curr.next = null;
+        prev.next = next;
+
+    }
 
     public static void main(String[] args) {
 
@@ -128,12 +188,33 @@ public class LinkedList {
         ll.addLast(6);
         ll.add(3,2);
         
-        ll.removeFirst();
-        ll.printLL();
-        ll.removeLast();
-        ll.printLL();
+        // ll.removeFirst();
+        // ll.printLL();
+        // ll.removeLast();
+        // ll.printLL();
 
-        ll.search(4);
-        ll.search(10);
+        // ll.search(4);
+        // ll.search(10);
+
+        // // System.out.println();
+        // // System.out.println("Recursive Found at : "+ll.recursiveSearch(4, head, 0));
+        // // System.out.println();
+        // // System.out.println("Recursive Found at: "+ll.recursiveSearch(10, head, 0));
+
+        // System.out.println();
+        // System.out.println("Recursive Found at : " + ll.recursiveSearch(4, head));
+        // System.out.println();
+        // System.out.println("Recursive Found at: " + ll.recursiveSearch(10, head));
+
+
+        // System.out.println();
+        // ll.printLL();
+        // System.out.println();
+        // ll.reverseLL();
+        ll.printLL();
+        System.out.println();
+        ll.removeNthNode(3);
+        ll.printLL();
+        
     }
 }
