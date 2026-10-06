@@ -42,7 +42,6 @@ public class ChocolaProblem {
             hp++;
         }
 
-
         System.out.println("Total minimum cost : " + totalCost);
 
     }
