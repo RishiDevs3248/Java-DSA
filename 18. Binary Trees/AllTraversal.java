@@ -68,6 +68,20 @@ public class AllTraversal {
         }
     }
 
+
+    // height of the tree
+    public static int heightOfTree(Node root){
+        if(root == null){
+            return 0;
+        }
+
+        int left = heightOfTree(root.left);
+        int right = heightOfTree(root.right);
+
+        return Math.max(left, right) + 1;
+    }
+
+    
     // build tree
     static class Node {
 
@@ -120,5 +134,12 @@ public class AllTraversal {
         System.out.println("");
         System.out.println("levelorder : ");
         levelOrder(root);
+
+        System.out.println("");
+        System.out.println("");
+        System.out.println("");
+        System.out.println("");
+        System.out.print("Height Of Tree : ");
+        System.out.println(heightOfTree(root));
     }
 }
