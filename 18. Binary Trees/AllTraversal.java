@@ -1,16 +1,22 @@
 
+import java.util.LinkedList;
+import java.util.Queue;
+
 public class AllTraversal {
 
-    public static void preOrder(Node root){
-        if(root == null){
+    //DFS
+    //preOrder
+    public static void preOrder(Node root) {
+        if (root == null) {
             // System.out.print( "-1 ");
             return;
         }
-        System.out.print(root.data+" ");
+        System.out.print(root.data + " ");
         preOrder(root.left);
         preOrder(root.right);
     }
 
+    //inOrder
     public static void inOrder(Node root) {
         if (root == null) {
             // System.out.print("-1 ");
@@ -21,6 +27,7 @@ public class AllTraversal {
         inOrder(root.right);
     }
 
+    //postOrder
     public static void postOrder(Node root) {
         if (root == null) {
             // System.out.print("-1 ");
@@ -31,6 +38,37 @@ public class AllTraversal {
         System.out.print(root.data + " ");
     }
 
+    //BFS
+    //levelOrder
+    public static void levelOrder(Node root) {
+        if (root == null) {
+            return;
+        }
+        Queue<Node> q = new LinkedList<>();
+        q.add(root);
+        q.add(null);
+        while (!q.isEmpty()) {
+            Node currNode = q.remove();
+            if (currNode == null) {
+                System.out.println();
+                if (q.isEmpty()) {
+                    break;
+                } else {
+                    q.add(null);
+                }
+            } else {
+                System.out.print(currNode.data + " ");
+                if (currNode.left != null) {
+                    q.add(currNode.left);
+                }
+                if (currNode.right != null) {
+                    q.add(currNode.right);
+                }
+            }
+        }
+    }
+
+    // build tree
     static class Node {
 
         int data;
@@ -59,15 +97,15 @@ public class AllTraversal {
             newNode.right = buildTree(nodes);
 
             return newNode;
-        };
+        }
+    ;
+
     }
 
     public static void main(String[] args) {
         int preOrder[] = {1, 2, 4, -1, -1, 5, -1, -1, 3, -1, 6, -1, -1};
         BinaryTree tree = new BinaryTree();
         Node root = tree.buildTree(preOrder);
-
-
 
         System.out.println("preorder : ");
         preOrder(root);
@@ -79,7 +117,8 @@ public class AllTraversal {
         System.out.println();
         System.out.println("postorder : ");
         postOrder(root);
-
-
-    } 
+        System.out.println("");
+        System.out.println("levelorder : ");
+        levelOrder(root);
+    }
 }
