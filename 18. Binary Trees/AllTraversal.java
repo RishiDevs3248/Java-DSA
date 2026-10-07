@@ -81,7 +81,21 @@ public class AllTraversal {
         return Math.max(left, right) + 1;
     }
 
-    
+
+
+    // Count of the nodes in a tree
+    public static int countOfNodes(Node root) {
+        if (root == null) {
+            return 0;
+        }
+
+        int left = countOfNodes(root.left);
+        int right = countOfNodes(root.right);
+
+        return left + right + 1;
+    }
+
+
     // build tree
     static class Node {
 
@@ -141,5 +155,7 @@ public class AllTraversal {
         System.out.println("");
         System.out.print("Height Of Tree : ");
         System.out.println(heightOfTree(root));
+        System.out.print("Count of nodes : ");
+        System.out.println(countOfNodes(root));
     }
 }
