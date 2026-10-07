@@ -96,6 +96,19 @@ public class AllTraversal {
     }
 
 
+    // Sum of the nodes in a tree
+    public static int sumOfNodes(Node root) {
+        if (root == null) {
+            return 0;
+        }
+
+        int left = sumOfNodes(root.left);
+        int right = sumOfNodes(root.right);
+
+        return left + right + root.data;
+    }
+
+
     // build tree
     static class Node {
 
@@ -157,5 +170,7 @@ public class AllTraversal {
         System.out.println(heightOfTree(root));
         System.out.print("Count of nodes : ");
         System.out.println(countOfNodes(root));
+        System.out.print("Sum of nodes : ");
+        System.out.println(sumOfNodes(root));
     }
 }
