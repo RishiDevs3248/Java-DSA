@@ -138,10 +138,11 @@ public class AllTraversal {
     }
 
 
-    // Diameter of a tree. //Time complexity = O(n^2)
+    // Diameter of a tree. //Time complexity = O(n)
     static int maxDia = Integer.MIN_VALUE;
-    public static int maxDiameter(Node root){
-        if(root == null){
+
+    public static int maxDiameter(Node root) {
+        if (root == null) {
             return 0;
         }
 
@@ -151,7 +152,7 @@ public class AllTraversal {
         int currDia = ld + rd + 1;
         maxDia = Math.max(maxDia, currDia);
 
-        return Math.max(ld, rd)+1;
+        return Math.max(ld, rd) + 1;
     }
 
 
