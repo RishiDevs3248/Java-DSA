@@ -155,26 +155,62 @@ public class AllTraversal {
         return Math.max(ld, rd) + 1;
     }
 
+    // k th level of the tree
+    public static void kthLevelNodes(Node root, int k){
+        if(root == null){
+            return;
+        }
+        int currLevel = 1;
+
+        Queue<Node> q = new LinkedList<>();
+        q.add(root);
+        q.add(null);
+        while(!q.isEmpty()){
+            Node curr = q.remove();
+
+            if(curr == null){
+                if(q.isEmpty()){
+                    return;
+                }else{
+                    currLevel++;
+                    q.add(null);
+                }
+            }else{
+                if (currLevel == k) {
+                    System.out.print(curr.data + " ");
+                } else if (currLevel > k) {
+                    return;
+                }
+                if(curr.left != null){
+                    q.add(curr.left);
+                }
+                if (curr.right != null) {
+                    q.add(curr.right);
+                }
+            }
+        }
+
+    }
 
     public static void main(String[] args) {
         int preOrder[] = {1, 2, 4, -1, -1, 5, -1, -1, 3, -1, 6, -1, -1};
-        int nodes[] = {
-            1,
-            2,
-            4,
-            8,
-            7, -1, -1,
-            -1,
-            -1,
-            5,
-            -1,
-            6,
-            -1,
-            9, -1, -1,
-            3, -1, -1
-        };
+        // int nodes[] = {
+        //     1,
+        //     2,
+        //     4,
+        //     8,
+        //     7, -1, -1,
+        //     -1,
+        //     -1,
+        //     5,
+        //     -1,
+        //     6,
+        //     -1,
+        //     9, -1, -1,
+        //     3, -1, -1
+        // };
         BinaryTree tree = new BinaryTree();
-        Node root = tree.buildTree(nodes);
+        Node root = tree.buildTree(preOrder);
 
         // System.out.println("preorder : ");
         // preOrder(root);
@@ -202,7 +238,10 @@ public class AllTraversal {
         // System.out.println(sumOfNodes(root));
 
 
-        maxDiameter(root);
-        System.out.println(maxDia);
+        // maxDiameter(root);
+        // System.out.println(maxDia);
+
+        System.out.print("Kth Level Nodes : ");
+        kthLevelNodes(root, 3);
     }
 }
