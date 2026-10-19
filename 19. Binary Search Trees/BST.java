@@ -1,4 +1,6 @@
 public class BST {
+
+    // Build a BST
     static class Node{
         int data;
         Node left;
@@ -24,6 +26,7 @@ public class BST {
         return root;
     }
 
+    // Inorder of BST
     public static void inorder(Node root){
         if(root == null){
             return;
@@ -32,6 +35,21 @@ public class BST {
         inorder(root.left);
         System.out.print(root.data+" ");
         inorder(root.right);
+    }
+
+    // Search in a BST // time Complexity - O(H) -> H = height of the tree
+    public static boolean searchInBST(Node root, int key){
+        if(root == null){
+            return false;
+        }
+
+        if(root.data == key){
+            return true;
+        } else if (key < root.data) {
+            return searchInBST(root.left, key);
+        } else {
+            return searchInBST(root.right, key);
+        }
     }
 
     public static void main(String[] args) {
@@ -44,6 +62,14 @@ public class BST {
 
         System.out.print("Inorder traversal of BST : ");
         inorder(root);
+        System.out.println();
+
+        
+        System.out.print("Search '3' in BST : "+ searchInBST(root, 3));
+        System.out.println();
+
+        System.out.print("Search '10' in BST : " + searchInBST(root, 10));
+        System.out.println();
 
     }
 }
