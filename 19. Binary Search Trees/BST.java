@@ -122,44 +122,74 @@ public class BST {
         return root;
     }
 
+    // Preorder
+    public static void preOrder(Node root){
+        if( root == null){
+            return;
+        }
+        System.out.print(root.data + " ");
+        preOrder(root.left);
+        preOrder(root.right);
+    }
+
+    // Sorted array to balanced BST
+    public static Node sortedToBalancedBST(int[] arr, int st, int ed){
+        if(st>ed){
+            return null;
+        }
+
+        int mid = (st + ed)/2;
+        Node root = new Node(arr[mid]);
+        root.left = sortedToBalancedBST(arr, st, mid-1);
+        root.right = sortedToBalancedBST(arr, mid+1, ed);
+        return root;
+    }
+
+
     public static void main(String[] args) {
         // int values[] = {5,1,3,4,2,7};
-        int values[] = {8, 5, 3, 1, 4, 6, 10, 11, 14};
+        int values[] = {3,5,6,8,10,11,12};
+        // int values[] = {8, 5, 3, 1, 4, 6, 10, 11, 14};
         Node root = null;
 
         for (int i = 0; i < values.length; i++) {
             root = insert(root, values[i]);
         }
 
-        System.out.print("Inorder traversal of BST : ");
-        inorder(root);
-        System.out.println();
+        // System.out.print("Inorder traversal of BST : ");
+        // inorder(root);
+        // System.out.println();
 
-        System.out.print("Search '3' in BST : " + searchInBST(root, 3));
-        System.out.println();
+        // System.out.print("Search '3' in BST : " + searchInBST(root, 3));
+        // System.out.println();
 
-        System.out.print("Search '10' in BST : " + searchInBST(root, 10));
-        System.out.println();
+        // System.out.print("Search '10' in BST : " + searchInBST(root, 10));
+        // System.out.println();
 
-        System.out.print("Before Delete : ");
-        inorder(root);
-        System.out.println();
-        System.out.print("delete '10' in BST : " + delete(root, 1));
-        System.out.println();
-        System.out.print("After Delete : ");
-        inorder(root);
-        System.out.println();
+        // System.out.print("Before Delete : ");
+        // inorder(root);
+        // System.out.println();
+        // System.out.print("delete '10' in BST : " + delete(root, 1));
+        // System.out.println();
+        // System.out.print("After Delete : ");
+        // inorder(root);
+        // System.out.println();
 
 
-        System.out.print("Print in range 5 - 12 : ");
-        printInRange(root, 5, 12);
-        System.out.println();
+        // System.out.print("Print in range 5 - 12 : ");
+        // printInRange(root, 5, 12);
+        // System.out.println();
         
-        System.out.print("Before Mirror : ");
-        inorder(root);
-        System.out.println();
-        System.out.print("After Mirror : ");
-        inorder(mirrorBST(root));
+        // System.out.print("Before Mirror : ");
+        // inorder(root);
+        // System.out.println();
+        // System.out.print("After Mirror : ");
+        // inorder(mirrorBST(root));
+        // System.out.println();
+
+
+        System.out.print("Sorted Array to BST : ");
+        preOrder(sortedToBalancedBST(values, 0, values.length-1));
 
     }
 }
