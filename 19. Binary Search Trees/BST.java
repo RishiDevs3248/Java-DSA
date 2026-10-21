@@ -1,3 +1,4 @@
+import java.util.ArrayList;
 
 public class BST {
 
@@ -133,28 +134,45 @@ public class BST {
     }
 
     // Sorted array to balanced BST
-    public static Node sortedToBalancedBST(int[] arr, int st, int ed){
+    public static Node sortedToBalancedBST(ArrayList<Integer> arr, int st, int ed){
         if(st>ed){
             return null;
         }
 
         int mid = (st + ed)/2;
-        Node root = new Node(arr[mid]);
+        Node root = new Node(arr.get(mid));
         root.left = sortedToBalancedBST(arr, st, mid-1);
         root.right = sortedToBalancedBST(arr, mid+1, ed);
         return root;
     }
 
+    // Convert BST to Balanceed BST
+    public static Node BSTtoBalsncedBST(Node root){
+        ArrayList<Integer> arr = new ArrayList<Integer>();
+        getInOrder(root, arr);
+        Node newroot = sortedToBalancedBST(arr, 0, arr.size()-1);
+        return newroot;
+    }
+
+    public static void getInOrder(Node root, ArrayList arr){
+        if(root == null){
+            return;
+        }
+
+        getInOrder(root.left, arr);
+        arr.add(root.data);
+        getInOrder(root.right, arr);
+    }
 
     public static void main(String[] args) {
         // int values[] = {5,1,3,4,2,7};
-        int values[] = {3,5,6,8,10,11,12};
+        // int values[] = {3,5,6,8,10,11,12};
         // int values[] = {8, 5, 3, 1, 4, 6, 10, 11, 14};
-        Node root = null;
+        // Node root = null;
 
-        for (int i = 0; i < values.length; i++) {
-            root = insert(root, values[i]);
-        }
+        // for (int i = 0; i < values.length; i++) {
+        //     root = insert(root, values[i]);
+        // }
 
         // System.out.print("Inorder traversal of BST : ");
         // inorder(root);
@@ -188,8 +206,21 @@ public class BST {
         // System.out.println();
 
 
-        System.out.print("Sorted Array to BST : ");
-        preOrder(sortedToBalancedBST(values, 0, values.length-1));
+        // System.out.print("Sorted Array to BST : ");
+        // preOrder(sortedToBalancedBST(values, 0, values.length-1));
+
+
+        Node root = new Node(8);
+        root.left = new Node(6);
+        root.left.left = new Node(5);
+        root.left.left.left = new Node(3);
+        root.right = new Node(10);
+        root.right.right = new Node(11);
+        root.right.right.right = new Node(12);
+
+
+        System.out.print("BST to balanced BST : ");
+        preOrder(BSTtoBalsncedBST(root));
 
     }
 }
