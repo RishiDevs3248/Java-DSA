@@ -107,6 +107,21 @@ public class BST {
         }
     }
 
+    // Mirror a BST
+    public static Node mirrorBST(Node root){
+        if(root == null){
+            return null;
+        }
+
+        Node left = mirrorBST(root.left);
+        Node right = mirrorBST(root.right);
+
+        root.left = right;
+        root.right = left;
+
+        return root;
+    }
+
     public static void main(String[] args) {
         // int values[] = {5,1,3,4,2,7};
         int values[] = {8, 5, 3, 1, 4, 6, 10, 11, 14};
@@ -139,6 +154,12 @@ public class BST {
         System.out.print("Print in range 5 - 12 : ");
         printInRange(root, 5, 12);
         System.out.println();
+        
+        System.out.print("Before Mirror : ");
+        inorder(root);
+        System.out.println();
+        System.out.print("After Mirror : ");
+        inorder(mirrorBST(root));
 
     }
 }
