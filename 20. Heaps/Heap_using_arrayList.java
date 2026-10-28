@@ -63,6 +63,40 @@ public class Heap_using_arrayList {
         public boolean isEmpty(){
             return arr.isEmpty();
         }
+
+        private void heapify_heapSort_maxheap(int arr[], int i, int size) {
+            int l = (2 * i) + 1;
+            int r = (2 * i) + 2;
+            int maxidx = i;
+
+            if (l < size && arr[maxidx] < arr[l]) {
+                maxidx = l;
+            }
+            if (r < size && arr[maxidx] < arr[r]) {
+                maxidx = r;
+            }
+            if (maxidx != i) {
+                int temp = arr[i];
+                arr[i] = arr[maxidx];
+                arr[maxidx] = temp;
+
+                heapify_heapSort_maxheap(arr, maxidx, size);
+            }
+        }
+
+        public void heapSort(int array[]){
+            int size = array.length;
+            for (int i = size/2; i >= 0; i--) {
+                heapify_heapSort_maxheap(array, i, size);
+            }
+            for (int i=size-1; i>0; i--){
+                int temp = array[0];
+                array[0] = array[i];
+                array[i] = temp;
+
+                heapify_heapSort_maxheap(array, 0, i);
+            }
+        }
     }
 
     public static void main(String[] args) {
@@ -73,9 +107,16 @@ public class Heap_using_arrayList {
         h.add(1);
         h.add(5);
 
-        while (!h.isEmpty()) {
-            System.out.println(h.peek());
-            h.remove();
+        // while (!h.isEmpty()) {
+        //     System.out.println(h.peek());
+        //     h.remove();
+        // }
+
+        int arr[] = {1,2,4,5,3};
+        h.heapSort(arr);
+        for (int i = 0 ; i < arr.length; i++){
+            System.out.print(arr[i] + " ");
         }
+
     }
 }
