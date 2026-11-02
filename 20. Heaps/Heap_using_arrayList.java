@@ -46,8 +46,8 @@ public class Heap_using_arrayList {
 
         public int remove(){
             int data = arr.get(0);
-
-            //swap with last
+            
+            //swap first and last
             int temp = arr.get(0);
             arr.set(0, arr.get(arr.size()-1));
             arr.set(arr.size() - 1, temp);
