@@ -19,7 +19,7 @@ public class MajorityElement {
         System.out.print("[ ");
         Set<Integer> keys = mp.keySet();
         for (Integer key : keys) {
-            if(mp.get(key) > 3){
+            if(mp.get(key) > nums.length/3){
                 System.out.print(key+" ");
             }
         }
