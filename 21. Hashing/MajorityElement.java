@@ -14,11 +14,12 @@ public class MajorityElement {
             }else{
                 mp.put(nums[i], 1);
             }
+            // Shorthand
+            // mp.put(nums[i], mp.getOrDefault(mp.get(nums[i])+1, 1));
         }
 
         System.out.print("[ ");
-        Set<Integer> keys = mp.keySet();
-        for (Integer key : keys) {
+        for (Integer key : mp.keySet()) {
             if(mp.get(key) > nums.length/3){
                 System.out.print(key+" ");
             }
