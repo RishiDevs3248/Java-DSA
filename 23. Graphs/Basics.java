@@ -1,4 +1,4 @@
-import java.util.ArrayList;
+import java.util.*;
 
 public class Basics {
 
@@ -13,6 +13,29 @@ public class Basics {
             this.weight = weight;
         }
     }
+
+    public static void bfs (ArrayList<Edge>[] graph){
+        Queue<Integer> q = new LinkedList<>();
+        boolean vis[] = new boolean[graph.length];
+
+        q.add(0); // source = 0
+
+        while(!q.isEmpty()){
+            int curr = q.remove();
+
+            if(!vis[curr]){
+                System.out.print(curr+ " ");
+                vis[curr] = true;
+                for(int i=0; i <graph[curr].size(); i++){
+                    Edge e = graph[curr].get(i);
+                    q.add(e.dest);
+                }
+
+            }
+        }
+
+    }
+
     public static void main(String[] args) {
 
 /*
@@ -60,6 +83,8 @@ public class Basics {
             Edge e = graph[2].get(i);
             System.out.println(e.dest);
         }
+
+        bfs(graph);
 
     }
 }
