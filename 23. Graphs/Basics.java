@@ -44,11 +44,11 @@ public class Basics {
 
     }
 
-    public static void dfs(ArrayList<Edge>[] graph, int curr){
+    public static void dfs(ArrayList<Edge>[] graph){
         boolean vis[] = new boolean[graph.length];
         for (int i = 0; i < graph.length; i++) {
             if (!vis[i]) {
-                dfsUtil(graph, curr, vis);
+                dfsUtil(graph, i, vis);
             }
         }
     }
@@ -118,7 +118,7 @@ public class Basics {
 
         bfs(graph);
         System.out.println();
-        dfs(graph, 0);
+        dfs(graph);
 
     }
 }
