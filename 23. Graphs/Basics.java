@@ -14,10 +14,18 @@ public class Basics {
         }
     }
 
-    public static void bfs (ArrayList<Edge>[] graph){
-        Queue<Integer> q = new LinkedList<>();
-        boolean vis[] = new boolean[graph.length];
 
+    public static void bfs (ArrayList<Edge>[] graph){
+        boolean vis[] = new boolean[graph.length];
+        for(int i=0; i<graph.length; i++){
+            if(!vis[i]){
+                bfsUtil(graph, vis);
+            }
+        }
+    }
+
+    public static void bfsUtil (ArrayList<Edge>[] graph, boolean vis[]){
+        Queue<Integer> q = new java.util.LinkedList<>();
         q.add(0); // source = 0
 
         while(!q.isEmpty()){
@@ -36,7 +44,16 @@ public class Basics {
 
     }
 
-    public static void dfs(ArrayList<Edge>[] graph, int curr, boolean vis[]){
+    public static void dfs(ArrayList<Edge>[] graph, int curr){
+        boolean vis[] = new boolean[graph.length];
+        for (int i = 0; i < graph.length; i++) {
+            if (!vis[i]) {
+                dfsUtil(graph, curr, vis);
+            }
+        }
+    }
+
+    public static void dfsUtil(ArrayList<Edge>[] graph, int curr, boolean vis[]){
         //visit
         System.out.print(curr+ " ");
         vis[curr] = true;
@@ -45,7 +62,7 @@ public class Basics {
             Edge e =  graph[curr].get(i);
 
             if(!vis[e.dest]){
-                dfs(graph, e.dest, vis);
+                dfsUtil(graph, e.dest, vis);
             }
         }
 
@@ -101,7 +118,7 @@ public class Basics {
 
         bfs(graph);
         System.out.println();
-        dfs(graph, 0, new boolean[V]);
+        dfs(graph, 0);
 
     }
 }
