@@ -75,6 +75,6 @@ public class BellmanFordAlgorithm {
 
         int src = 0;
 
-        bellmanFordAlgo(graph, src);
+        bellmanFordAlgo(graph, src); // Time complexity is O(V*E)
     }
 }
