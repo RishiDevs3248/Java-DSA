@@ -1,8 +1,8 @@
 import java.util.ArrayList;
 import java.util.PriorityQueue;
 
-public class DijkstraAlgorithm {
-
+// Dijkstra Algorithm will give wrong answers for a graph with -ve weights, so we use bellman ford's algorithm there when we see -ve weights
+public class DijkstraAlgorithm { 
     static class Edge {
         int src;
         int dest;
